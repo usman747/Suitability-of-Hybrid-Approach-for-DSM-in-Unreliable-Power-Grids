@@ -53,11 +53,13 @@
   (at 19.0 (= (battery_soc)33.5301083333))
   (at 20.0 (= (battery_soc)23.054725))
   (at 21.0 (= (battery_soc)4.26168333333))
+  ;(at 21.1 (random_shed_during_peak)) ;RANDOM POWER OUTAGE DURING PEAK
   (at 22.0 (= (battery_soc)-10.2939583333))
   (at 23.0 (= (battery_soc)-21.1253166667))
   (at 23.01 (not(peak)))
   (at 23.02 (off_peak))
-   
+  (at 23.5 (= (battery_soc)-31.1253166667))
+  
   (at 24 (day_ended))
 )
 (:goal

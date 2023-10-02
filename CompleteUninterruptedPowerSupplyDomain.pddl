@@ -19,7 +19,8 @@
 (is_decreasing)(is_increasing)
 (peak) (off_peak) (blackout)
 (is_not_blackout) (charging_now)
-(is_not_random_blackout)
+(is_not_random_blackout) 
+(random_shed_during_peak)
 )
 
 
@@ -62,6 +63,7 @@
 :condition(and 
          (at start(enable))
          (at start (charging_now))
+         (at start (random_shed_during_peak))
          (over all (peak))
          (over all (is_not_blackout))
          (over all (is_not_random_blackout))
