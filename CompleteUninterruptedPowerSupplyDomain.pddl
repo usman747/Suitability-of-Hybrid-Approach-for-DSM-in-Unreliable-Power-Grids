@@ -36,7 +36,7 @@
 
 )
 
-(:durative-action chargePreEmptiveBatteryCheaply
+(:durative-action Battery_Charge_Pre-Emptive_Cheaply
 :parameters()
 :duration (=?duration 0.33)
 :condition(and 
@@ -56,25 +56,25 @@
 (at end (charging_now))
 ))
 
-;(:durative-action chargePreEmptiveBatteryExpensively
-;:parameters()
-;:duration (=?duration 0.33)
-;:condition(and 
-;         (at start(enable))
-;         (at start (charging_now))
-;         (over all (peak))
-;         (over all (is_not_blackout))
-;         (over all (is_not_random_blackout))
-;         (at start (>= (cheap_priority_level) priority_value))
-;         (at end (<= (+ (battery_soc) (battery-soc-fix)) (upper_limit)))
-;)
-;:effect(and
-;(at end (increase (battery-soc-fix) charging_rate))
-;(at end (is_increasing))
-;(at end (increase (RadomRunLevel) 1))
-;(at start (not(charging_now)))
-;(at end (charging_now))
-;))
+(:durative-action Battery_Charge_Pre-Emptive_Expensively
+:parameters()
+:duration (=?duration 0.33)
+:condition(and 
+         (at start(enable))
+         (at start (charging_now))
+         (over all (peak))
+         (over all (is_not_blackout))
+         (over all (is_not_random_blackout))
+         (at start (>= (cheap_priority_level) priority_value))
+         (at end (<= (+ (battery_soc) (battery-soc-fix)) (upper_limit)))
+)
+:effect(and
+(at end (increase (battery-soc-fix) charging_rate))
+(at end (is_increasing))
+(at end (increase (random_run_level) 1))
+(at start (not(charging_now)))
+(at end (charging_now))
+))
 
 
 
@@ -85,7 +85,7 @@
 
 
 
-(:durative-action chargeBatteryCheaply
+(:durative-action Battery_Charge_Cheaply
 :parameters()
 :duration (=?duration 0.33)
 :condition(and 
@@ -108,7 +108,7 @@
 ))
 
 
-(:durative-action chargeBatteryExpensively
+(:durative-action Battery_Charge_Expensively
 :parameters()
 :duration (=?duration 0.33)
 :condition(and 
@@ -131,7 +131,7 @@
 
 
 
-(:durative-action DayAheadPlan 
+(:durative-action Day_Ahead_Plan 
 :parameters()
 :duration (<= ?duration 100)
 :condition(and

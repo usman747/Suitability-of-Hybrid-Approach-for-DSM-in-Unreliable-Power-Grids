@@ -11,7 +11,7 @@
   (=(cheap_priority_level)0)
   (=(priority_value)6)
   (=(random_run_level)0)
-  (=(random_run_capacity_value)3)
+  (=(random_run_capacity_value)0)
 
 
   
@@ -34,9 +34,9 @@
   (at 12.0 (= (battery_soc)56.852175))
    
   
-  ;(at 13.0 (not(is_not_random_blackout))) ;RANDOM POWER OUTAGE
-  ;(at 14.0 (is_not_random_blackout))
-  ;(at 14.0 (= (battery_soc) 50.4043333333))
+  (at 13.0 (not(is_not_random_blackout))) ;RANDOM POWER OUTAGE
+  (at 14.0 (is_not_random_blackout))
+  (at 14.0 (= (battery_soc) 50.4043333333))
 
   (at 15.0 (= (battery_soc) 50.4043333333))
    
