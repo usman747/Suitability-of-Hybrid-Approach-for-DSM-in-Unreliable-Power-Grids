@@ -34,7 +34,8 @@
 (priority_value)
 (random_run_level)
 (random_run_capacity_value)
-
+(random_run_expensive_level)
+(random_run_expensive_capacity_value)
 )
 
 (:durative-action Battery_Charge_Pre-Emptive_Cheaply
@@ -67,24 +68,17 @@
          (over all (peak))
          (over all (is_not_blackout))
          (over all (is_not_random_blackout))
+         (at start (<= (random_run_expensive_level) random_run_expensive_capacity_value))
          (at start (>= (cheap_priority_level) priority_value))
          (at end (<= (+ (battery_soc) (battery-soc-fix)) (upper_limit)))
 )
 :effect(and
 (at end (increase (battery-soc-fix) charging_rate))
 (at end (is_increasing))
-(at end (increase (random_run_level) 1))
+(at end (increase (random_run_expensive_level) 1))
 (at start (not(charging_now)))
 (at end (charging_now))
 ))
-
-
-
-
-
-
-
-
 
 
 (:durative-action Battery_Charge_Cheaply
@@ -103,7 +97,6 @@
 :effect(and
 (at end (increase (battery-soc-fix) charging_rate))
 (at end (increase (cheap_priority_level) 1))
-(at end (increase (random_run_level) 1))
 (at start (not(charging_now)))
 (at end (charging_now))
 
@@ -120,7 +113,7 @@
          (over all (is_not_blackout))
          (over all (is_not_random_blackout))
          (at start (>= (cheap_priority_level) priority_value))
-         (at start (>= (random_run_level) random_run_capacity_value))
+         (at start (>= (random_run_expensive_level) random_run_expensive_capacity_value))
          (at end (<= (+ (battery_soc) (battery-soc-fix)) (upper_limit)))
 )
 :effect(and
