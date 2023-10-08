@@ -1,0 +1,42 @@
+1. Temp above 43 -> 0
+new_data = np.array([[2023, 9, 24, 15, 30, 0, 42, 15, 4, 0, 7]])  # Adjust the values accordingly
+Temp below 43 -> 1
+..
+new_data = np.array([[2023, 9, 24, 15, 30, 0, 36, 60, 4, 0, 27]])  # Adjust the values accordingly
+#['Year', 'Month', 'Day', 'Hour', 'Minute', 'Second', 'Temperature', 'Humidity', 'WindSpeed', 'WeatherObserved','DewpointTemp']
+..
+new_data = np.array([[2023, 6, 24, 13, 10, 0, 39, 42, 4, 0, 24]])  # Adjust the values accordingly
+..
+new_data = np.array([[2023, 1, 26, 13, 10, 0, 16, 45, 6, 1, 2]])  # Adjust the values accordingly
+..
+new_data = np.array([[2023, 1, 26, 13, 10, 0, 6, 93, 4, 4, 5]])  # Adjust the values accordingly
+...
+new_data = np.array([[2022, 9, 1, 22, 30, 0, 28, 79, 4, 0, 24]])  # Adjust the values accordingly
+hour from 22 gives 1, while hour before 22 gives 0...It means the model learns that system is more strained in the morning
+new_data = np.array([[2022, 9, 1, 18, 30, 0, 28, 79, 4, 0, 24]])  # Adjust the values accordingly
+..
+new_data = np.array([[2022, 8, 23, 9, 20, 0, 31, 66, 6, 0, 24]])  # Adjust the values accordingly
+..
+new_data = np.array([[2022, 8, 21, 15, 20, 0, 25, 94, 6, 0, 24]])  # Adjust the values accordingly ->0
+new_data = np.array([[2022, 8, 21, 21, 20, 0, 25, 94, 6, 0, 24]])  # Adjust the values accordingly->1
+Day, Night time causes
+
+now I modified some values to test the model.
+new_data = np.array([[2022, 8, 21, 15, 20, 0, 25, 20, 1, 0, 5]])  # Adjust the values accordingly
+I removed the rain like conditions and it predicts 1 
+..
+new_data = np.array([[2022, 7, 3, 11, 45, 0, 35, 80, 5, 2, 31]])  # Adjust the values accordingly->0
+..
+new_data = np.array([[2022, 7, 1, 5, 10, 0, 24, 100, 11, 10, 24]])  # Adjust the values accordingly->0
+High rainy and windy weather, though temperature is down.
+
+Now modified some things, still 0, but the moment I change the dew factor it gives 1, chaha wind jo bhi ho
+new_data = np.array([[2022, 7, 1, 5, 10, 0, 24, 10, 11, 0, 20]])  # Adjust the values accordingly->0
+new_data = np.array([[2022, 7, 1, 5, 10, 0, 24, 10, 11, 0, 2]])  # Adjust the values accordingly->1
+new_data = np.array([[2022, 7, 1, 5, 10, 0, 24, 10, 2, 0, 2]])  # Adjust the values accordingly->1
+new_data = np.array([[2022, 7, 1, 5, 10, 0, 24, 10, 2, 0, 20]])  # Adjust the values accordingly->0
+Hence, dew factor plays a huge role 
+..
+new_data = np.array([[2022, 6, 6, 15, 10, 0, 43, 14, 7, 0, 10]])  # Adjust the values accordingly->0
+Modify temp, lower it and it gives 1
+new_data = np.array([[2022, 6, 6, 15, 10, 0, 24, 14, 7, 0, 10]])  # Adjust the values accordingly->1
