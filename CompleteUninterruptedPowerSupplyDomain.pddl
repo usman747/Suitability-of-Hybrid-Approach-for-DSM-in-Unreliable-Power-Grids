@@ -16,8 +16,7 @@
 
 (:predicates(complete)(begin)
 (enable) (day_ended) 
-(is_decreasing)(is_increasing)
-(peak) (off_peak) (blackout)
+(peak) (off_peak) 
 (is_not_blackout) (charging_now)
 (is_not_random_blackout) 
 (random_shed_during_peak)
@@ -74,7 +73,6 @@
 )
 :effect(and
 (at end (increase (battery-soc-fix) charging_rate))
-(at end (is_increasing))
 (at end (increase (random_run_expensive_level) 1))
 (at start (not(charging_now)))
 (at end (charging_now))
@@ -118,7 +116,6 @@
 )
 :effect(and
 (at end (increase (battery-soc-fix) charging_rate))
-(at end (is_increasing))
 (at start (not(charging_now)))
 (at end (charging_now))
 ))
