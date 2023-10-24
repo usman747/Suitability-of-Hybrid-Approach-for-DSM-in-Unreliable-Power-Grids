@@ -37,7 +37,7 @@
 (random_run_expensive_capacity_value)
 )
 
-(:durative-action Battery_Charge_Pre-Emptive_Cheaply
+(:durative-action Battery_Charge_for-Random_Cheaply
 :parameters()
 :duration (=?duration 0.33)
 :condition(and 
@@ -57,7 +57,7 @@
 (at end (charging_now))
 ))
 
-(:durative-action Battery_Charge_Pre-Emptive_Expensively
+(:durative-action Battery_Charge_for-Random_Expensively
 :parameters()
 :duration (=?duration 0.33)
 :condition(and 
@@ -89,6 +89,7 @@
          (over all (is_not_blackout))
          (over all (is_not_random_blackout))
          (at start (>= (random_run_level) random_run_capacity_value))
+         (at start (<= (cheap_priority_level) priority_value))        
          (at end (<= (+ (battery_soc) (battery-soc-fix)) (upper_limit)))
          ;the line above restricts it from charging over 100%,
          ) 
